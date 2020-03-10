@@ -1,0 +1,190 @@
+@import "../../sass/styles.scss";
+
+.products {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 75px;
+  width: 100vw;
+  @include flex(row, center, center);
+  .products-container {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(
+      rgba(213, 214, 233, 0.7),
+      rgba(70, 131, 180, 0.7),
+      rgba(255, 255, 255, 0.5)
+    );
+    .products-header {
+      @include flex(row, space-between, center);
+      .products-header-title {
+        font-size: 3rem;
+        color: white;
+        text-shadow: rgba(70, 131, 180, 0.7) 0 0 5px;
+        padding: 0 20px;
+      }
+      .products-checkout-buttons {
+        position: fixed;
+        box-sizing: border-box;
+        width: 10%;
+        z-index: 9999;
+        right: 10px;
+        top: 95px;
+
+        transition: 0.5s;
+
+        .products-checkout-button {
+          position: relative;
+          margin: auto;
+          width: 50px;
+          height: 50px;
+          background: linear-gradient(
+            -8deg,
+            rgb(221, 221, 221) 5%,
+            rgb(243, 243, 243)
+          );
+          @include shadow(rgba(58, 61, 56, 0.6), 5px);
+          @include circle;
+          img {
+            width: 50px;
+            transform: translate(-3px, 0px);
+          }
+          .checkout-conuter {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            right: -8px;
+            bottom: -5px;
+
+            @include circle;
+            background-color: steelblue;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+      .products-new-buttons {
+        box-sizing: border-box;
+        .products-new-button {
+          position: relative;
+          margin: auto;
+          width: 50px;
+          height: 50px;
+          background: linear-gradient(
+            -8deg,
+            rgb(221, 221, 221) 5%,
+            rgb(243, 243, 243)
+          );
+          @include shadow(rgba(58, 61, 56, 0.6), 5px);
+          @include circle;
+          div {
+            margin: auto;
+            width: 35px;
+            height: 4px;
+            background-color: rgba(88, 89, 91, 1);
+            border-radius: 4px;
+          }
+          div:first-child {
+            transform: translate(0, 23px);
+          }
+          div:last-child {
+            transform: rotate(90deg) translate(19px, 0);
+          }
+        }
+      }
+    }
+    .product-container {
+      width: 100%;
+      box-sizing: border-box;
+
+      .product-flex-box {
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-flow: row wrap;
+        margin: 10px;
+        .product-box {
+          position: relative;
+          width: 500px;
+          height: 200px;
+          margin: 20px;
+          padding: 20px;
+          background-color: white;
+          border-radius: 5px;
+          box-shadow: rgba(61, 61, 61, 0.438) 0 0 10px;
+          @include flex(row, space-between, center);
+          .product-left {
+            width: 100%;
+          }
+          .product-right {
+            width: 100%;
+          }
+          .products-edit-button {
+            position: absolute;
+            top: -10px;
+            right: 5px;
+            width: 50px;
+            height: 50px;
+            @include circle;
+            @include shadow(rgba(100, 100, 100, 0.5), 5px);
+            background: linear-gradient(
+              -8deg,
+              rgb(221, 221, 221) 5%,
+              rgb(243, 243, 243)
+            );
+            @include flex(row, center, center);
+            img {
+              width: 60%;
+              margin-bottom: 5px;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .products {
+    .products-container {
+      width: 100vw;
+      background: transparent;
+      .products-header {
+        .products-header-title {
+          font-size: 3rem;
+        }
+        .products-checkout-buttons {
+          position: fixed;
+          margin-right: 20px;
+        }
+      }
+      .product-container {
+        width: 100%;
+        .product-flex-box {
+          width: 100%;
+          .product-box {
+            width: 90%;
+            @include flex(column, space-between, center);
+            .product-left {
+              width: 100%;
+              background-color: red;
+            }
+            .product-right {
+              width: 100%;
+              button {
+                float: right;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

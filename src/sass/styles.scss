@@ -1,0 +1,19 @@
+
+@mixin shadow($color, $blur) {
+    box-shadow: $color 0 0 $blur;
+}
+
+@mixin flex($direction, $justify, $align){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin uppercase {
+    text-transform: uppercase;
+}
+
+@mixin circle {
+    border-radius: 50%;
+}

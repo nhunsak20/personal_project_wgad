@@ -1,0 +1,410 @@
+.error-top {
+  margin-top: 60px;
+}
+
+.login-register {
+  position: relative;
+  padding-top: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+  opacity: 0;
+  height: 100vh;
+  transition: 0.5s;
+}
+
+.login-form {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.register-form {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  margin-top: 15vh;
+  transition: 0.5s;
+}
+
+.login-form-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 40vw;
+  border-radius: 10px;
+  padding: 10px 20px;
+
+  background-image: url("https://cdn.shopify.com/s/files/1/1003/7610/products/A_golf_ball_at_the_hole_Wall_Mural_Wallpaper_a.jpg?v=1578614161");
+  background-repeat: no-repeat;
+  background-position: right 35% bottom 100%;
+
+  box-shadow: black 0 0 10px;
+
+  transition: 0.5s;
+}
+
+.register-form-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 50vw;
+  border-radius: 10px;
+  padding: 10px 20px;
+
+  background-image: url("https://cdn.shopify.com/s/files/1/1003/7610/products/A_golf_ball_at_the_hole_Wall_Mural_Wallpaper_a.jpg?v=1578614161");
+  background-repeat: no-repeat;
+  background-position: right 35% bottom 100%;
+
+  box-shadow: black 0 0 10px;
+
+  transition: 0.5s;
+}
+
+.login-containers {
+  width: 80%;
+  padding-top: 20px;
+  border-radius: 10px;
+  box-shadow: black 0 0 5px inset;
+  font-family: "Arvo", serif;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.5);
+
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+  transition: 0.5s;
+}
+
+.register-containers {
+  width: 80%;
+  padding: 20px 0;
+  border-radius: 10px;
+  box-shadow: black 0 0 5px inset;
+  font-family: "Arvo", serif;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.5);
+
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+  transition: 0.5s;
+}
+
+.login-input-container {
+  display: flex;
+  flex-flow: column;
+  margin: auto;
+  width: 90%;
+  transition: 0.5s;
+}
+
+.register-input-container {
+  display: flex;
+  flex-flow: column;
+  margin: auto;
+  width: 90%;
+  transition: 0.5s;
+}
+
+.login-input-container > input {
+  padding: 3px 5px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.register-input-container > input {
+  padding: 3px 5px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.label-input-login {
+  text-align: left;
+  padding: 5px 10px;
+  color: rgb(47, 51, 46);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  transition: 0.5s;
+}
+
+.label-input-register {
+  text-align: left;
+  padding: 5px 10px;
+  color: rgb(47, 51, 46);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  transition: 0.5s;
+}
+
+.desktop-login-buttons {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Arvo", serif;
+  transition: 0.5s;
+}
+
+.desktop-register-buttons {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.mobile-login-buttons {
+  margin-bottom: 10vh;
+  display: none;
+}
+
+.mobile-register-buttons {
+  margin-bottom: 10vh;
+  display: none;
+}
+
+.desktop-login-buttons > button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.desktop-register-buttons > button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.mobile-login-buttons > button {
+  width: 100%;
+  padding: 10px 20px;
+  margin: 20px 0;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-family: "Arvo", serif;
+  transition: 0.5s;
+}
+
+.mobile-register-buttons > button {
+  width: 100%;
+  padding: 10px 20px;
+  margin: 20px 0;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-family: "Arvo", serif;
+  transition: 0.5s;
+}
+
+.login-error {
+  width: 100%;
+  height: 25px;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.login-logo-box {
+  width: 90%;
+  transition: 0.5s;
+}
+
+.register-logo-box {
+  width: 90%;
+  transition: 0.5s;
+}
+
+.login-logo-img {
+  width: 80%;
+  padding: 20px 0;
+  transition: 0.5s;
+}
+
+.register-logo-img {
+  width: 80%;
+  padding: 20px 0;
+  transition: 0.5s;
+}
+
+.login-error > span {
+  color: red;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.mobile-cancel {
+  display: block;
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  background-color: white;
+  box-shadow: black 0 0 5px;
+
+  cursor: pointer;
+}
+
+.mobile-cancel-line1 {
+  height: 5px;
+  width: 35px;
+  border-radius: 2.5px;
+  transform: rotate(45deg) translate(21px, 10px);
+  background-color: slategray;
+}
+.mobile-cancel-line2 {
+  height: 5px;
+  width: 35px;
+  border-radius: 2.5px;
+  transform: rotate(-45deg) translate(-7px, 17px);
+  background-color: slategray;
+}
+
+@media screen and (max-width: 760px) {
+  .login-register{
+    top: 10vh;
+    height: calc(100vh - 10vh);
+    background-color: green;
+  }
+
+  .login-form{
+    padding: 0;
+    height: 100%;
+  }
+
+  .register-form {
+    padding: 0;
+    height: 100%;
+  }
+
+  .login-form-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    margin-top: -15vh;
+    box-shadow: none;
+    padding: 0;
+    background-size: 400%;
+  }
+
+  .register-form-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    margin-top: -15vh;
+    box-shadow: none;
+    padding: 0;
+    background-size: 400%;
+  }
+
+  .login-logo-box {
+    padding-top: 30px;
+  }
+
+  .register-logo-box{
+    padding: 20px 0;
+  }
+
+  .login-containers {
+    justify-content: space-between;
+
+  }
+  .login-input-container {
+    width: 90%;
+  }
+
+  .register-input-container {
+    width: 90%;
+  }
+
+  .login-containers {
+    width: 90%;
+    height: 30vh;
+    padding: 0;
+  }
+
+  .register-containers {
+    width: 90%;
+    height: 30vh;
+    padding: 0;
+  }
+  .label-input-login {
+    font-size: 1rem;
+  }
+  .login-input-container > input {
+    padding: 1%;
+    margin: 1%;
+  }
+
+  .register-input-container > input {
+    padding: 1%;
+    margin: 1%;
+    font-size: 1.1rem;
+  }
+
+  .desktop-login-buttons {
+    display: none;
+  }
+  .desktop-register-buttons {
+    display: none;
+  }
+
+  .mobile-login-buttons {
+    display: block;
+  }
+  .mobile-register-buttons {
+    display: block;
+  }
+
+  .mobile-cancel{
+    display: none;
+  }
+}
+
+.top {
+  margin-top: 10px;
+}
+
+/* Animations... */
+
+.fade-in{
+  opacity: 1;
+}
+
+.fade-out{
+  opacity: 0;
+}
+
+@keyframes slideDown {
+  form {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 15vh;
+  }
+}

@@ -1,0 +1,70 @@
+@import "../../sass/styles.scss";
+
+.checkout {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 75px;
+  width: 100vw;
+  height: 100vh;
+  @include flex(row, center, center);
+  .checkout-container{
+      position: relative;
+      width: 75%;
+      height: 80%;
+    border-radius: 10px;
+    background: linear-gradient(
+      rgba(213, 214, 233, 0.7),
+      rgba(70, 131, 180, 0.7),
+      rgba(255, 255, 255, 0.5)
+    );
+    box-shadow: rgba(128, 127, 127, 0.603) 0 0 5px inset;
+      @include flex(column, space-between, center);
+      .checkout-header{
+        box-sizing: border-box;
+        height: 10%;
+        margin-top: 20px;
+        background-color: red;
+        h2 {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            transform: rotate(-10deg);
+            font-size: 4rem;
+            color: rgb(232, 234, 255);
+            text-shadow: rgba(71, 71, 71, 0.6) 0 0 5px;
+        }
+      }
+      .checkout-cart-lists {
+          width: 90%;
+            box-sizing: border-box;
+          border-radius: 10px;
+          box-shadow: rgba(128, 127, 127, 0.603) 0 0 5px;
+          background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(114, 172, 219, 0.7), rgba(255, 255, 255, 0.5));
+
+            div{
+                width: 80%;
+                height: 150px;
+                margin-bottom: 20px;
+            }
+      }
+      .checkout-buttons {
+          position: relative;
+          width: 100%;
+          @include flex(row, space-around, center);
+        button {
+            width: 150px;
+            padding: 5px 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 30px;
+
+            border: none;
+            border-radius: 5px;
+            @include uppercase;
+
+            background: linear-gradient(rgb(109, 166, 212), steelblue);
+        }
+      }
+  }
+}

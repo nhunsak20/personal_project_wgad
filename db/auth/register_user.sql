@@ -1,3 +1,3 @@
-insert into users (username, password)
+insert into users (email, password)
 values ($1, $2)
 returning *;

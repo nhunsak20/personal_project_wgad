@@ -1,0 +1,425 @@
+@import "../../sass/styles.scss";
+
+.event {
+  position: relative;
+  width: 100vw;
+  padding-top: 75px;
+  box-sizing: border-box;
+  @include flex(column, center, center);
+
+  .event-container {
+    position: relative;
+    margin: 50px;
+    width: 80%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: linear-gradient(
+      rgba(213, 215, 238, 0.6),
+      rgba(95, 95, 141, 0.5)
+    );
+    box-shadow: rgba(110, 103, 103, 0.6) 0 0 5px;
+
+    .event-header {
+      @include flex(row, space-between, center);
+      h1 {
+        width: 70%;
+        font-size: 3.5rem;
+        text-align: left;
+        padding: 20px;
+        color: white;
+        text-shadow: rgba(115, 116, 117, 0.6) 0 0 5px;
+      }
+      .event-new-buttons {
+        width: 30%;
+
+        .event-new-button {
+          position: relative;
+          margin: auto;
+          width: 50px;
+          height: 50px;
+          background: linear-gradient(
+            -8deg,
+            rgb(221, 221, 221) 5%,
+            rgb(243, 243, 243)
+          );
+          @include shadow(rgba(58, 61, 56, 0.6), 5px);
+          @include circle;
+          div {
+            margin: auto;
+            width: 35px;
+            height: 4px;
+            background-color: rgba(88, 89, 91, 1);
+            border-radius: 4px;
+          }
+          div:first-child {
+            transform: translate(0, 23px);
+          }
+          div:last-child {
+            transform: rotate(90deg) translate(19px, 0);
+          }
+        }
+      }
+    }
+    .event-box {
+      @include flex(column, space-around, center);
+      flex-flow: wrap;
+      box-sizing: border-box;
+      .event-box-container {
+        position: relative;
+        width: 500px;
+        box-sizing: border-box;
+        margin: 20px;
+        border-radius: 8px;
+        background: linear-gradient(
+          0deg,
+          rgba(180, 180, 180, 0.7),
+          rgba(255, 255, 255, 0.7)
+        );
+        box-shadow: rgba(83, 73, 73, 0.5) 0 0 5px inset;
+        @include flex(row, space-between, flex-end);
+        .event-title {
+          width: 50%;
+          box-sizing: border-box;
+          padding: 20px;
+          .event-course-none-img {
+            width: 200px;
+            height: 150px;
+            background: linear-gradient(rgb(243, 243, 243), rgb(211, 211, 211));
+            @include shadow(rgba(87, 87, 87, 0.514), 5px);
+          }
+          .event-title-img-back {
+            img {
+              width: 200px;
+              border-radius: 5px;
+              @include shadow(rgba(87, 87, 87, 0.514), 5px);
+            }
+            .event-course {
+              font-size: 1rem;
+            }
+          }
+          .event-title-header {
+            position: absolute;
+            top: 12%;
+            left: 2%;
+            padding: 2px 10px;
+
+            color: rgb(68, 68, 68);
+            background: linear-gradient(rgb(243, 243, 243), rgb(231, 231, 231));
+
+            border-radius: 2px;
+            transform: rotate(-5deg);
+            font-size: 1.8rem;
+            @include shadow(black, 5px);
+          }
+        }
+        .event-edit-button {
+          position: absolute;
+          top: -18px;
+          right: -18px;
+          width: 50px;
+          height: 50px;
+          @include circle;
+          @include shadow(rgba(100, 100, 100, 0.5), 5px);
+          background: linear-gradient(
+            -8deg,
+            rgb(221, 221, 221) 5%,
+            rgb(243, 243, 243)
+          );
+          @include flex(row, center, center);
+          img {
+            width: 60%;
+            margin-bottom: 5px;
+            margin-left: 5px;
+          }
+        }
+        .event-right-side {
+          margin: auto;
+          width: 50%;
+          box-sizing: border-box;
+          @include flex(column, space-between, center);
+          padding: 10px;
+          .event-location {
+            font-size: 1.5rem;
+            font-weight: bold;
+          }
+          .event-flex-buttons {
+            @include flex(column, flex-end, center);
+            padding: 20px 0;
+            .event-button {
+              @include uppercase;
+              font-size: 1.5rem;
+              width: 100%;
+              padding: 10px 15px;
+              font-weight: bold;
+              margin: 10px;
+              border: none;
+              border-radius: 8px;
+              color: white;
+              background: linear-gradient(
+                -5deg,
+                rgb(93, 104, 200),
+                rgb(101, 175, 236)
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.new-event {
+  position: relative;
+  padding-top: 75px;
+  width: 100vw;
+  box-sizing: border-box;
+  // background-color: rgba(255, 255, 255, 0.9);
+  @include flex(column, center, center);
+
+  .new-event-container {
+    // position: relative;
+    box-sizing: border-box;
+    @include shadow(rgba(0, 0, 0, 0.6), 10px);
+    background: linear-gradient(
+      rgba(213, 215, 238, 0.6),
+      rgba(95, 95, 141, 0.5),
+      rgba(213, 215, 238, 0.6)
+    );
+    width: 50%;
+    margin: 50px;
+    border-radius: 8px;
+    @include flex(column, space-around, center);
+    .new-event-form {
+      position: relative;
+      width: 90%;
+      box-sizing: border-box;
+      text-align: left;
+      @include flex(column, space-around, center);
+      .new-event-form-container {
+        width: 90%;
+
+        .new-event-title {
+          font-size: 3.5rem;
+          color: rgb(255, 255, 255);
+          text-shadow: rgb(63, 63, 63) 0 0 5px;
+        }
+        .event-delete-button {
+          position: absolute;
+          top: 20px;
+          right: 0;
+          width: 50px;
+          height: 50px;
+
+          @include shadow(rgba(100, 100, 100, 0.5), 5px);
+            background: linear-gradient(
+              -8deg,
+              rgb(221, 221, 221) 5%,
+              rgb(243, 243, 243)
+            );
+
+          @include circle;
+          @include flex(row, center, center);
+
+          img {
+            height: 30px;
+            margin-right: 3px;
+          }
+        }
+        .new-event-input-container {
+          position: relative;
+          background: linear-gradient(
+      rgba(222, 222, 228, 0.8),
+      rgba(161, 161, 161, 0.8)
+    );
+          width: 90%;
+          box-shadow: black 0 0 5px inset;
+          border-radius: 8px;
+          box-sizing: border-box;
+          margin: 10px auto;
+          padding: 10px 20px;
+          select {
+            option {
+              padding: 5px 10px;
+            }
+            margin: 5px 2.5%;
+          }
+          input[type="date"] {
+            padding: 5px 10px;
+            margin: 0 5px;
+          }
+          textarea {
+            width: 95%;
+            height: 150px;
+            margin: 5px 2.5%;
+            border-radius: 5px;
+          }
+        }
+        .new-event-buttons {
+          @include flex(row, space-between, center);
+          margin-bottom: 15px;
+          .new-event-button {
+            padding: 5px 10px;
+            width: 100px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(rgb(152, 139, 241), steelblue);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.event-detail {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 75px;
+  box-sizing: border-box;
+  @include flex(column, center, center);
+  .event-detail-container {
+    width: 80%;
+    height: 600px;
+    border-radius: 10px;
+    background: linear-gradient(
+      rgba(213, 214, 233, 0.7),
+      rgba(70, 131, 180, 0.7),
+      rgba(255, 255, 255, 0.5)
+    );
+    box-shadow: rgba(128, 127, 127, 0.603) 0 0 5px inset;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .event {
+    padding-top: 5vh;
+    background: rgba(255, 255, 255, 0.3);
+    .event-container {
+      width: 100vw;
+      box-shadow: none;
+      border-radius: 0;
+      background: transparent;
+      .event-header {
+        h1 {
+          font-size: 2.5rem;
+          color: white;
+        }
+      }
+      .event-box {
+        width: 100%;
+
+        .event-box-container {
+          width: 100%;
+          border-radius: 4px;
+          @include flex(column, center, center);
+          box-shadow: none;
+          //   border-radius: 0;
+          background: linear-gradient(
+            -5deg,
+            rgba(92, 92, 133, 0.5),
+            rgba(173, 173, 200, 0.7),
+            rgba(229, 229, 241, 0.8)
+          );
+          .event-title {
+            font-size: 1.3rem;
+            width: 100%;
+            .event-title-img-back {
+              width: 100%;
+              img {
+                width: 100%;
+              }
+            }
+            .event-title-header {
+              top: 5%;
+            }
+          }
+          .event-right-side {
+            padding: 0;
+            width: 100%;
+            .event-location {
+              font-size: 2rem;
+              color: white;
+            }
+
+            .event-flex-buttons {
+              @include flex(column, space-around, center);
+              padding: 0;
+              width: 90%;
+              .event-button {
+                width: 90%;
+                font-size: 1.5rem;
+                padding: 10px 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .new-event {
+    top: 10vh;
+    .new-event-container {
+      width: 95%;
+
+      .new-event-form {
+        width: 100%;
+        .new-event-form-container {
+          position: relative;
+          width: 100%;
+          .new-event-title {
+            font-size: 2rem;
+            padding: 0 5px;
+          }
+          .event-delete-button {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+
+            width: 50px;
+            height: 50px;
+            @include circle;
+            @include shadow(rgba(100, 100, 100, 0.5), 5px);
+            background: linear-gradient(
+              -8deg,
+              rgb(221, 221, 221) 5%,
+              rgb(243, 243, 243)
+            );
+          }
+          .new-event-input-container {
+            position: relative;
+            width: 100%;
+            box-shadow: none;
+            padding: 10px;
+            // display: flex;
+            // justify-content: center;
+            select {
+              background-color: white;
+              padding: 10px;
+              font-size: 1rem;
+              border-radius: 10px;
+            }
+            input[type="date"] {
+              font-size: 1.3rem;
+            }
+            textarea {
+              width: 95%;
+              margin: 5px auto;
+              padding: 5px;
+              font-size: 1.3rem;
+            }
+          }
+          .new-event-buttons {
+            @include flex(column-reverse, space-around, center);
+            .new-event-button {
+              width: 80%;
+              padding: 10px 0;
+              margin: 20px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

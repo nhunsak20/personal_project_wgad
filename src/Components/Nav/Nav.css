@@ -1,0 +1,288 @@
+.nav-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  color: white;
+  box-shadow: rgb(19, 73, 78) 0 0 5px;
+  z-index: 9999;
+}
+
+.desktop-header-nav {
+  display: flex;
+  height: 75px;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: deepskyblue;
+  width: 100vw;
+  padding: 15px 20px;
+
+  font-family: "Faustina", serif;
+}
+.desktop-wgad {
+  width: 50vw;
+  text-align: left;
+  margin-top: 10px;
+}
+.desktop-wgad img {
+  width: 15vw;
+}
+
+.desktop-menu {
+  width: 70%;
+}
+.desktop-menu-items {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+
+  list-style: none;
+}
+.desktop-menu-items li {
+  width: 18vw;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.link-menu-item {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-item {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* // background-color: green; */
+  width: 100px;
+}
+.desktop-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+.desktop-profile span {
+  padding-right: 10px;
+  font-size: 1rem;
+}
+
+.desktop-profile-icon {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+}
+.desktop-profile-icon img{
+  height: 50px;
+  border-radius: 50%;
+}
+/* .profile-img{
+  border-radius: 50%;
+  height: 45px;
+} */
+
+.desktop-profile-menu-container {
+  position: absolute;
+  top: 76px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: 0;
+  text-transform: uppercase;
+  color: black;
+  background-color: rgba(5, 151, 170, 0.5);
+  box-shadow: rgba(85, 104, 90, 0.6) 0 0 5px;
+
+  transition: 0.5s;
+
+  
+}
+.profile-menu-items li {
+  opacity: 1;
+  width: 12vw;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.profile-active {
+  transition: 0.2s ease-in;
+  height: 130px;
+}
+.profile-non-active {
+  transition: 0.3s ease-in;
+  height: 0;
+}
+
+.mobile-header-nav {
+  display: none;
+}
+
+.mobile-header-nav nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: deepskyblue;
+
+  padding: 15px 20px;
+}
+.mobile-profile {
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+.mobile-profile-img {
+  height: 50px;
+  width: 50px;
+  background-color: white;
+}
+.mobile-profile-noimg {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background-color: white;
+}
+
+.mobile-nav-wgad {
+  width: 50vw;
+}
+.mobile-nav-wgad img {
+  width: 45vw;
+}
+
+.mobile-nav-icon {
+  display: flex;
+  flex-flow: column;
+  padding: 5px;
+}
+.mobile-nav-icon div {
+  width: 35px;
+  height: 4px;
+  background-color: slategray;
+}
+
+.line-2 {
+  margin: 8px 0;
+}
+
+.active div {
+  transition: 0.2s ease-in;
+}
+.non-active div {
+  transition: 0.2s ease-in;
+}
+
+.mobile-nav-menu {
+  position: absolute;
+  top: 85px;
+  width: 100%;
+  height: 0;
+  background-color: rgba(124, 104, 238, 0.2);
+}
+
+.dropdown {
+  animation: dropdown 0.3s ease-in forwards;
+}
+
+.dropup {
+  animation: dropup 0.5s ease-in backwards;
+}
+
+@media screen and (max-width: 780px) {
+  .desktop-header-nav {
+    display: none;
+  }
+
+  .mobile-header-nav {
+    display: block;
+  }
+}
+
+.active .line-1 {
+  transform: rotate(45deg) translate(9px, 8px);
+}
+.active .line-2 {
+  opacity: 0;
+}
+.active .line-3 {
+  transform: rotate(-45deg) translate(9px, -8px);
+}
+
+.non-active .line-1 {
+  transform: rotate(0) translate(0, 0);
+}
+.non-active .line-2 {
+  opacity: 1;
+}
+.non-active .line-3 {
+  transform: rotate(0) translate(0, 0);
+}
+
+.mobile-menu-items {
+  list-style: none;
+  width: 100%;
+}
+
+.mobile-menu-items li {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1.8rem;
+  height: 0;
+  opacity: 0;
+
+  background-color: rgb(124, 104, 238);
+}
+
+@keyframes dropdown {
+  to {
+    opacity: 1;
+    height: 400px;
+  }
+  from {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes dropup {
+  to {
+    height: 0;
+    opacity: 0;
+  }
+  from {
+    height: 400px;
+    opacity: 1;
+  }
+}
+
+@keyframes dropdownItem {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes dropupItem {
+  to {
+    opacity: 0;
+  }
+  from {
+    opacity: 1;
+  }
+}

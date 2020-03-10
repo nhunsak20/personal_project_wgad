@@ -16,11 +16,14 @@ module.exports = {
         const isAuth = bcrypt.compareSync(password, user.password)
 
         if(isAuth) {
-
             session.user = {
                 id: user.user_id,
                 username: user.username,
-                email: user.email
+                email: user.email,
+                isActive: user.isactive,
+                isBoard: user.isboard,
+                isAdmin: user.isadmin,
+                logged: true
             }
 
             return res.status(202).send(session.user)
@@ -30,9 +33,9 @@ module.exports = {
     register: async (req, res) => {
         const { email, password } = req.body
         const { session } = req
-        const db = req.app.get('db')
+        const db = req.app.get('db').auth
 
-        let user = await db.check_user(email).auth
+        let user = await db.check_user(email)
         user = user[0]
 
         if(user) {
@@ -49,7 +52,8 @@ module.exports = {
             session.user = {
                 id: newUser.user_id,
                 username: newUser.username,
-                email: newUser.email
+                email: newUser.email,
+                logged: true
             }
             return res.status(200).send(session.user)
         }
