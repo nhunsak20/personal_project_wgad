@@ -2,48 +2,60 @@
     {
         "id": 0,
         "course": "Bonneville Golf Course",
+        "img": "",
         "slopes": {
                 "men": [
                     {   
                         "color": "Black",
                         "rating": 71.1,
-                        "slope": 126
+                        "slope": 126,
+                        "yards": 2354
                     },
                     {
                         "color": "Blue",
                         "rating": 69.5,
-                        "slope": 122
+                        "slope": 122,
+                        "yards": 2343
                     }, 
                     {
                         "color": "White",
                         "rating": 67.4,
-                        "slope": 112
+                        "slope": 112,
+                        "yards": 2343
                     },
                     {
                         "color": "Gold",
                         "rating": 65.9,
-                        "slope": 111
+                        "slope": 111,
+                        "yards": 2343
                     }
                 ],
                 "women": [
                     {
                         "color": "Blue",
                         "rating": 74.7,
-                        "slope": 130
+                        "slope": 130,
+                        "yards": 2343
                     },
                     {
                         "color": "White",
                         "rating": 72.1,
-                        "slope": 124
+                        "slope": 124,
+                        "yards": 2343
                     },
                     {
                         "color": "Gold",
                         "rating": 70.2,
-                        "slope": 119
+                        "slope": 119,
+                        "yards": 2343
                     }
                 ]
             },
-        "location": "Salt Lake City, UT"
+        "address": "Salt Lake City, UT",
+        "location": {
+            "lat": 9,
+            "lng": 20
+        }
     },
     {
         "id": 1,

@@ -5,7 +5,9 @@ module.exports = {
         
         try {
             let user_data = await db.get_profile(id)
+            console.log(user_data)
             user_data = user_data[0]
+
 
             let data = {...user_data, logged: true}
 

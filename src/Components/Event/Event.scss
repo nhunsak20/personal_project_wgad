@@ -3,8 +3,8 @@
 .event {
   position: relative;
   width: 100vw;
-  padding-top: 75px;
-  box-sizing: border-box;
+  padding-top: 10vh;
+  height: 100vh;
   @include flex(column, center, center);
 
   .event-container {
@@ -20,7 +20,7 @@
     box-shadow: rgba(110, 103, 103, 0.6) 0 0 5px;
 
     .event-header {
-      @include flex(row, space-between, center);
+      @include flex(row, space-between, flex-start);
       h1 {
         width: 70%;
         font-size: 3.5rem;
@@ -211,11 +211,11 @@
           height: 50px;
 
           @include shadow(rgba(100, 100, 100, 0.5), 5px);
-            background: linear-gradient(
-              -8deg,
-              rgb(221, 221, 221) 5%,
-              rgb(243, 243, 243)
-            );
+          background: linear-gradient(
+            -8deg,
+            rgb(221, 221, 221) 5%,
+            rgb(243, 243, 243)
+          );
 
           @include circle;
           @include flex(row, center, center);
@@ -228,9 +228,9 @@
         .new-event-input-container {
           position: relative;
           background: linear-gradient(
-      rgba(222, 222, 228, 0.8),
-      rgba(161, 161, 161, 0.8)
-    );
+            rgba(222, 222, 228, 0.8),
+            rgba(161, 161, 161, 0.8)
+          );
           width: 90%;
           box-shadow: black 0 0 5px inset;
           border-radius: 8px;
@@ -275,26 +275,233 @@
 .event-detail {
   position: relative;
   width: 100vw;
-  height: 100vh;
-  padding-top: 75px;
+  padding: 15vh 0 5vh 0;
   box-sizing: border-box;
   @include flex(column, center, center);
   .event-detail-container {
     width: 80%;
-    height: 600px;
+    box-sizing: border-box;
     border-radius: 10px;
+    padding: 20px;
     background: linear-gradient(
       rgba(213, 214, 233, 0.7),
       rgba(70, 131, 180, 0.7),
       rgba(255, 255, 255, 0.5)
     );
     box-shadow: rgba(128, 127, 127, 0.603) 0 0 5px inset;
+    .event-detail-header {
+      position: relative;
+      @include flex(row, space-between, flex-start);
+      .event-detail-header-left {
+        width: 40%;
+        padding-right: 10px;
+        .event-detail-div-img {
+          display: flex;
+          justify-content: center;
+          box-sizing: border-box;
+          background-color: white;
+          border-radius: 5px;
+          padding: 20px;
+          @include shadow(rgba(82, 84, 90, 0.6), 8px);
+          img {
+            margin: auto;
+          }
+        }
+        .event-detail-div-date {
+          position: absolute;
+          top: -10px;
+          left: -10px;
+          padding: 10px 0;
+          @include flex(row, center, flex-end);
+          .event-detail-date {
+            transform: rotate(-4deg);
+            font-size: 2.5vw;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: linear-gradient(
+              rgb(255, 255, 255),
+              rgb(225, 235, 243),
+              rgb(255, 255, 255)
+            );
+            @include shadow(rgb(96, 119, 138), 8px);
+            font-weight: bold;
+          }
+        }
+      }
+      .event-detail-header-right {
+        width: 60%;
+        height: 100%;
+        padding-left: 10px;
+        @include flex(column, space-around, flex-start);
+        .event-detail-course-title {
+          padding-top: 10px;
+          font-size: 2.5rem;
+        }
+        .event-detail-address {
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          p {
+            width: 100%;
+            font-size: 1.5rem;
+            text-align: right;
+          }
+        }
+        .event-detail-buttons {
+          @include flex(row, space-between, center);
+          width: 100%;
+          padding: 20px 0;
+          .event-detail-button {
+            width: 40%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            padding: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(rgb(152, 139, 241), steelblue);
+            @include uppercase;
+          }
+        }
+      }
+    }
+  }
+  .event-detail-middle {
+    padding: 20px;
+    @include flex(column, center, center);
+    .event-detail-slopes {
+      @include flex(row, space-between, center);
+      width: 70%;
+      box-sizing: border-box;
+      padding: 10px;
+      border-radius: 2px;
+      box-shadow: rgba(49, 76, 98, 0.7) 0 0 8px inset;
+      background: linear-gradient(
+        rgba(235, 246, 255, 0.7),
+        rgba(220, 220, 221, 0.6)
+      );
+      .event-detail-slope-men {
+        position: relative;
+        width: 35vw;
+        // padding: 5px;
+        border-right: black solid 2px;
+        label {
+          font-weight: bold;
+          font-size: 2rem;
+        }
+        .event-detail-slope {
+          @include flex(column, space-between, flex-start);
+          flex-flow: wrap;
+          .course-slopes-box {
+            width: 42%;
+            margin: 5px 10px;
+            @include flex(row, flex-start, center);
+            .course-slopes {
+              width: 3vw;
+              height: 3vw;
+              @include circle;
+            }
+            .yard-slopes {
+              @include flex(column, center, flex-start);
+              span {
+                font-size: 1.5vw;
+                padding-left: 15px;
+                font-weight: bold;
+              }
+              span:last-child {
+                border-top: black solid 2px;
+              }
+            }
+          }
+        }
+      }
+      .event-detail-slope-women {
+        position: relative;
+        width: 15vw;
+        padding: 10px;
+        label {
+          font-weight: bold;
+          font-size: 2rem;
+        }
+        .event-detail-slope {
+          @include flex(column, space-between, flex-start);
+          flex-flow: wrap;
+          .course-slopes-box {
+            width: 100%;
+            margin: 5px 10px;
+            @include flex(row, flex-start, center);
+            .course-slopes {
+              margin-left: 10px;
+              width: 3vw;
+              height: 3vw;
+              @include circle;
+            }
+            .yard-slopes {
+              @include flex(column, center, flex-start);
+              span {
+                font-size: 1.5vw;
+                padding-left: 15px;
+                font-weight: bold;
+              }
+              span:last-child {
+                border-top: black solid 2px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .event-detail-desr {
+      width: 50%;
+      box-sizing: border-box;
+      border-radius: 2px;
+      margin: 20px auto;
+      padding: 10px;
+      @include shadow(rgba(63, 79, 87, 0.6), 8px);
+      background: white;
+      font-size: 1.5rem;
+    }
+  }
+  .event-detail-map {
+    width: 100%;
+    height: 400px;
+    box-sizing: border-box;
+
+    @include flex(row, center, center);
+    .google-map-box {
+      width: 80%;
+      height: 80%;
+      @include shadow(rgb(81, 91, 97), 5px);
+      .google-map-marker {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        div {
+          width: 50px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: green;
+          transform: translate(-10px, 62px);
+        }
+        img {
+          width: 30px;
+          transform: translate(-1px, 1px);
+        }
+
+        span {
+          position: absolute;
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: 780px) {
   .event {
-    padding-top: 5vh;
+    padding-top: 10vh;
+    height: 100%;
+    box-sizing: border-box;
     background: rgba(255, 255, 255, 0.3);
     .event-container {
       width: 100vw;
@@ -309,6 +516,8 @@
       }
       .event-box {
         width: 100%;
+        height: 100%;
+        // background-color: red;
 
         .event-box-container {
           width: 100%;
@@ -416,6 +625,135 @@
               width: 80%;
               padding: 10px 0;
               margin: 20px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .event-detail {
+    padding: 10vh 0 0 0;
+    .event-detail-container {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      padding: 10px;
+      border-radius: 0;
+      .event-detail-header {
+        width: 100%;
+        padding: 20px 0;
+        @include flex(column, center, center);
+        .event-detail-header-left {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          .event-detail-div-img {
+            width: 80%;
+            img {
+              width: 80%;
+            }
+          }
+          .event-detail-div-date {
+            top: 10px;
+            left: 20px;
+            .event-detail-date {
+              font-size: 2rem;
+            }
+          }
+        }
+        .event-detail-header-right {
+          width: 100%;
+          @include flex(column, center, center);
+          .event-detail-course-title {
+            text-align: center;
+            font-size: 1.8rem;
+          }
+          .event-detail-address {
+            width: 100%;
+            p {
+              padding: 10px 0;
+              text-align: center;
+              font-size: 1.3rem;
+            }
+          }
+          .event-detail-buttons {
+            @include flex(column, space-around, center);
+            .event-detail-button {
+              width: 80%;
+              margin: 10px auto;
+            }
+          }
+        }
+      }
+      .event-detail-middle {
+        padding: 0;
+        .event-detail-desr {
+          width: 100%;
+        }
+        .event-detail-slopes {
+          width: 100%;
+          @include flex(column, center, center);
+          .event-detail-slope-men {
+            border: none;
+            border-bottom: rgba(44, 65, 78, 0.459) solid 2px;
+            width: 100%;
+            padding-bottom: 10px;
+            label {
+              font-size: 1.6rem;
+            }
+            .event-detail-slope{
+              .course-slopes-box {
+                .course-slopes {
+                  width: 8vw;
+                  height: 8vw;
+                }
+                .yard-slopes {
+                  span{
+                    font-size: 1.2rem;
+                  }
+                }
+              }
+            }
+          }
+          .event-detail-slope-women {
+            width: 100%;
+            padding-bottom: 10px;
+            label {
+              font-size: 1.6rem;
+            }
+            .event-detail-slope{
+              .course-slopes-box {
+                .course-slopes {
+                  width: 8vw;
+                  height: 8vw;
+                }
+                .yard-slopes {
+                  span{
+                    font-size: 1.2rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .event-detail-map {
+        width: 100%;
+        .google-map-box {
+          width: 100%;
+          .google-map-marker {
+            width: 30px;
+            height: 30px;
+            div {
+              width: 30px;
+              height: 10px;
+              border-radius: 50%;
+              background-color: green;
+              transform: translate(-5px, 40px);
+            }
+            img {
+              width: 20px;
+              transform: translate(0, 0);
             }
           }
         }

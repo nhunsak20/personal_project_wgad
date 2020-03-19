@@ -28,7 +28,7 @@ function Login(props) {
     const fadeBackground = document.getElementById("login-register");
 
     setTimeout(() => {
-      props.history.push(props.location.state.prevPath);
+      props.history.goBack();
     }, 100);
     resetInput();
 
@@ -55,11 +55,9 @@ function Login(props) {
   };
 
   useEffect(() => {
+    
     if (props.user.id) {
-      const prevPath = props.location.state
-        ? props.location.state.prevPath
-        : "/";
-      props.history.push(prevPath);
+      props.history.goBack()
     }
 
     const fadeBackground = document.getElementById("login-register");
@@ -108,9 +106,11 @@ function Login(props) {
                 />
               </div>
               <div className="login-error">
-                {/* {props.userReducer.isError ? (
-                  <span>{props.userReducer.errorMessage}</span>
-                ) : null} */}
+                {console.log(props.user.isError)}
+                {props.user.isError ? (
+                  
+                  <span>{props.user.errorMessage}</span>
+                ) : null}
               </div>
             </div>
             <div className="desktop-login-buttons">

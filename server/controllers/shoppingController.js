@@ -3,7 +3,7 @@ module.exports = {
         const db = req.app.get('db').products
 
         return db.get_products().then(dbObj => {
-            return res.status(200).send(dbObj.data)
+            return res.status(200).send(dbObj)
         }).catch(err => {
             return res.sendStatus(400)
         })
@@ -21,11 +21,11 @@ module.exports = {
         }
     },
     new: async (req, res) => {
-        const { name, price, describle, img } = req.body.products
+        const { product, price, describle, product_img } = req.body.products
         const db = req.app.get('db').products
 
         try {
-            let data = await db.add_product({name, price, describle, img})
+            let data = await db.add_product({product, price, describle, product_img})
             return res.status(200).send(data)
         }
         catch {

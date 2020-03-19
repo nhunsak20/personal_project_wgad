@@ -16,7 +16,7 @@
   // display: none;
   .desktop-header-nav {
     display: flex;
-    height: 75px;
+    height: 10vh;
     .desktop-wgad {
       @include flex(initial, initial, center);
       width: 20vw;
@@ -26,7 +26,7 @@
       }
     }
     nav {
-      @include flex(row, space-between, center);
+      @include flex(row, space-around, center);
       box-sizing: border-box;
       padding: 15px;
 
@@ -34,19 +34,19 @@
       .desktop-menu {
         width: 75vw;
         .desktop-menu-items {
-          @include flex(row, space-between, center);
+          @include flex(row, space-around, center);
           font-weight: bold;
           font-size: 1.2rem;
 
           list-style: none;
-          li {
+          // li {
+          .link-menu-item {
             width: 18vw;
             @include uppercase;
             letter-spacing: 2px;
-            .link-menu-item {
-              text-decoration: none;
-              color: white;
-            }
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
           }
           .nav-menu-item-last {
             .profile-menu {
@@ -63,6 +63,7 @@
                 .desktop-profile-icon {
                   width: 50px;
                   height: 50px;
+                  background-color: white;
                   @include circle;
                   img {
                     height: 50px;
@@ -79,7 +80,7 @@
                 padding: 0 10px;
                 height: 0;
                 color: black;
-                background-color: rgba(5, 151, 170, 0.5);
+                background-color: rgba(5, 151, 170, 0.9);
                 @include shadow(rgba(85, 104, 90, 0.6), 5px);
                 // width: 15vw;
 
@@ -93,7 +94,6 @@
                     opacity: 0;
                     z-index: -1;
                     margin: 5px 0;
-                    background-color: white;
                   }
 
                   cursor: pointer;
@@ -116,12 +116,14 @@
   .mobile-header-nav {
     display: none;
     height: 10vh;
+    @include shadow(rgba(80, 79, 79, 0.404), 5px);
     .mobile-profile {
       box-sizing: border-box;
       @include circle;
       .mobile-profile-img {
         height: 50px;
         width: 50px;
+        background-color: white;
         @include circle;
       }
       .mobile-profile-noimg {
@@ -144,7 +146,7 @@
       div {
         width: 35px;
         height: 4px;
-        background-color: black;
+        background-color: rgb(220, 229, 240);
         border-radius: 2px;
       }
 
@@ -164,11 +166,17 @@
       top: 10vh;
       width: 100%;
       height: 0;
-      background-color: blue;
+      background: linear-gradient(steelblue, rgb(134, 181, 219));
+      box-shadow: slategray, 0 5px 5px;
       transition: 0.5s;
       li {
         opacity: 0;
         display: none;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: white;
+        padding: 10px 0;
+        margin: 10px 0;
       }
     }
 
@@ -177,11 +185,18 @@
       top: 10vh;
       width: 100%;
       height: 0;
-      background-color: blue;
+      background: linear-gradient(steelblue, rgb(134, 181, 219));
       transition: 0.5s;
+      box-shadow: slategray, 0 5px 5px;
       li {
         opacity: 0;
         display: none;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: white;
+        padding: 10px 0;
+        margin: 10px 0;
+        @include uppercase;
       }
     }
 
@@ -200,7 +215,7 @@
   width: 100vw;
   position: absolute;
   height: 0;
-  top: 75px;
+  top: 10vh;
   box-sizing: border-box;
   @include flex(row, space-between, center);
   .desktop-wgad {
@@ -219,7 +234,7 @@
       height: 0;
     }
     .invisble-profile {
-        position: absolute;
+      position: absolute;
       list-style: none;
       box-sizing: border-box;
       padding: 0 10px;
@@ -230,7 +245,7 @@
       width: 18vw;
 
       color: black;
-      background-color: rgba(5, 151, 170, 0.5);
+      background-color: rgba(5, 151, 170, 0.9);
       @include shadow(rgba(85, 104, 90, 0.6), 5px);
 
       .profile-menu-items {
@@ -238,25 +253,59 @@
         list-style: none;
         margin: 5px 0;
         z-index: -1;
+
         li {
           opacity: 0;
           z-index: -1;
-          margin: 6px 0;
+          margin: 8px 0;
           padding: 3px 0;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
+          font-weight: bold;
+          text-decoration: none;
+          color: rgb(41, 41, 41);
+          @include uppercase;
+          cursor: pointer;
+          label {
+            cursor: pointer;
+            input {
+              height: 0;
+              width: 0;
+              opacity: 0;
+            }
+            input[type="checkbox"] {
+              display: none;
+
+              &:checked + label:before {
+                background: blue;
+              }
+            }
+            .checkbox {
+              padding-left: 20px;
+
+              &:before {
+                top: 0;
+                left: 0;
+                width: 13px;
+                height: 13px;
+                border: 1px solid #222;
+              }
+            }
+            .checkmark {
+              height: 20px;
+              width: 20px;
+              background-color: red;
+            }
+          }
         }
-
-        cursor: pointer;
+      }
     }
-    
-}.profile-active {
-animation: profile-dropdown 0.4s ease-in forwards;
-}
+    .profile-active {
+      animation: profile-dropdown 0.4s ease-in forwards;
+    }
 
-.profile-non-active {
-animation: profile-dropup 0.4s ease-in backwards;
-}
-    
+    .profile-non-active {
+      animation: profile-dropup 0.4s ease-in backwards;
+    }
   }
 }
 
@@ -297,7 +346,7 @@ animation: profile-dropup 0.4s ease-in backwards;
 @keyframes dropdown {
   to {
     opacity: 1;
-    height: 400px;
+    height: 325px;
   }
   from {
     height: 0;
@@ -311,32 +360,32 @@ animation: profile-dropup 0.4s ease-in backwards;
     opacity: 0;
   }
   from {
-    height: 400px;
+    height: 325px;
     opacity: 1;
   }
 }
 
 @keyframes profile-dropdown {
-    to {
-      opacity: 1;
-      height: 150px;
-    }
-    from {
-      height: 0;
-      opacity: 0;
-    }
+  to {
+    opacity: 1;
+    height: 100px;
   }
-  
-  @keyframes profile-dropup {
-    to {
-      height: 0;
-      opacity: 0;
-    }
-    from {
-      height: 150px;
-      opacity: 1;
-    }
+  from {
+    height: 0;
+    opacity: 0;
   }
+}
+
+@keyframes profile-dropup {
+  to {
+    height: 0;
+    opacity: 0;
+  }
+  from {
+    height: 100px;
+    opacity: 1;
+  }
+}
 
 @keyframes dropdownItem {
   to {

@@ -3,12 +3,13 @@
 .products {
   position: relative;
   box-sizing: border-box;
-  padding-top: 75px;
+  padding-top: 10vh;
   width: 100vw;
-  @include flex(row, center, center);
+  height: 100vh;
+  @include flex(row, space-around, flex-start);
   .products-container {
     width: 90%;
-    margin: 30px auto;
+    margin: 50px auto;
     padding: 20px;
     border-radius: 10px;
     background: linear-gradient(
@@ -17,7 +18,7 @@
       rgba(255, 255, 255, 0.5)
     );
     .products-header {
-      @include flex(row, space-between, center);
+      @include flex(row, space-between, flex-start);
       .products-header-title {
         font-size: 3rem;
         color: white;
@@ -29,8 +30,8 @@
         box-sizing: border-box;
         width: 10%;
         z-index: 9999;
-        right: 10px;
-        top: 95px;
+        right: 20px;
+        top: 120px;
 
         transition: 0.5s;
 
@@ -104,45 +105,134 @@
       .product-flex-box {
         position: relative;
         box-sizing: border-box;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-flow: row wrap;
+        @include flex(row, space-around, center);
+        flex-flow: wrap;
         margin: 10px;
         .product-box {
           position: relative;
+          box-sizing: border-box;
           width: 500px;
-          height: 200px;
           margin: 20px;
           padding: 20px;
-          background-color: white;
+          background: linear-gradient(
+            white,
+            rgb(216, 226, 235),
+            rgb(177, 203, 224)
+          );
           border-radius: 5px;
           box-shadow: rgba(61, 61, 61, 0.438) 0 0 10px;
-          @include flex(row, space-between, center);
-          .product-left {
-            width: 100%;
+          @include flex(column, space-between, flex-start);
+          .product-title {
+            padding-bottom: 20px;
+            font-size: 2rem;
           }
-          .product-right {
+          .product-bottom {
             width: 100%;
-          }
-          .products-edit-button {
-            position: absolute;
-            top: -10px;
-            right: 5px;
-            width: 50px;
-            height: 50px;
-            @include circle;
-            @include shadow(rgba(100, 100, 100, 0.5), 5px);
-            background: linear-gradient(
-              -8deg,
-              rgb(221, 221, 221) 5%,
-              rgb(243, 243, 243)
-            );
-            @include flex(row, center, center);
-            img {
-              width: 60%;
-              margin-bottom: 5px;
-              margin-left: 5px;
+            @include flex(row, space-between, flex-end);
+            .product-left {
+              width: 100%;
+              padding-right: 20px;
+              @include flex(row, center, center);
+              .product-img-background {
+                position: relative;
+                box-sizing: border-box;
+                background-color: white;
+                border-radius: 2px;
+                @include shadow(rgba(83, 104, 121, 0.7), 5px);
+                padding: 10px 20px;
+                width: 100%;
+                @include flex(initial, center, center);
+                img {
+                  height: 90%;
+                }
+              }
+              .product-price {
+                padding-left: 10px;
+                p {
+                  font-size: 1.5rem;
+                  font-weight: bold;
+                }
+              }
+            }
+            .product-right {
+              width: 100%;
+              @include flex(column, space-between, flex-end);
+              .product-quantity-input {
+                background-color: white;
+                border: #9daab4 solid 2px;
+                box-sizing: border-box;
+                border-radius: 4px;
+                margin-bottom: 30px;
+                @include flex(row, center, center);
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                  appearance: none;
+                }
+                input[type="number"] {
+                  width: 40px;
+                  height: 100%;
+                  padding: 2px 5px;
+                  font-size: 1.1rem;
+                  text-align: right;
+                  appearance: none;
+                  border: none;
+                }
+                .button {
+                  font-size: 2rem;
+                  font-weight: bold;
+                  width: 25px;
+                  height: 25px;
+                  padding: 2px 5px 8px 5px;
+                  border: none;
+                  cursor: pointer;
+                  @include flex(initial, center, center);
+                }
+                .button:last-child {
+                  border-left: #9daab4 solid 2px;
+                }
+                .button:first-child {
+                  border-right: #9daab4 solid 2px;
+                }
+              }
+
+              .product-buttons {
+                width: 100%;
+                @include flex(row, space-around, center);
+                button {
+                  padding: 10px 0;
+                  width: 100px;
+                  font-size: 1rem;
+                  font-weight: bold;
+                  border: none;
+                  border-radius: 5px;
+                  color: white;
+                  background: linear-gradient(rgb(109, 166, 212), steelblue);
+                  @include uppercase;
+                }
+                button:last-child {
+                  margin-left: 10px;
+                }
+              }
+            }
+            .products-edit-button {
+              position: absolute;
+              top: -10px;
+              right: 5px;
+              width: 50px;
+              height: 50px;
+              @include circle;
+              @include shadow(rgba(100, 100, 100, 0.5), 5px);
+              background: linear-gradient(
+                -8deg,
+                rgb(221, 221, 221) 5%,
+                rgb(243, 243, 243)
+              );
+              @include flex(row, center, center);
+              img {
+                width: 60%;
+                margin-bottom: 5px;
+                margin-left: 5px;
+              }
             }
           }
         }
@@ -153,8 +243,10 @@
 
 @media screen and (max-width: 780px) {
   .products {
+    height: 100%;
     .products-container {
       width: 100vw;
+      padding: 0;
       background: transparent;
       .products-header {
         .products-header-title {
@@ -167,19 +259,53 @@
       }
       .product-container {
         width: 100%;
+        padding: 50px 0;
+        background: linear-gradient(
+      rgba(213, 214, 233, 0.7),
+      rgba(70, 131, 180, 0.7),
+      rgba(255, 255, 255, 0.5)
+    );
         .product-flex-box {
-          width: 100%;
+          margin: 0;
+          padding: 0;
           .product-box {
-            width: 90%;
+            width: 100%;
+            border-radius: 0;
+            padding: 20px 10px;
+            margin: 20px 10px;
             @include flex(column, space-between, center);
-            .product-left {
-              width: 100%;
-              background-color: red;
+            .product-title {
+              font-size: 1.8rem;
             }
-            .product-right {
-              width: 100%;
-              button {
-                float: right;
+            .product-bottom {
+              width: 90%;
+              padding: 0;
+              @include flex(column, center, center);
+              .product-left {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                @include flex(column, center, center);
+                .product-img-background {
+                  width: 100%;
+                }
+                .product-price {
+                  padding: 10px;
+                  p {
+                    font-size: 2rem;
+                  }
+                }
+              }
+              .product-right {
+                width: 100%;
+                @include flex(column, space-between, center);
+                .product-buttons {
+                  width: 100%;
+                  button{
+                    width: 60%;
+                    font-size: 1.5rem;
+                  }
+                }
               }
             }
           }

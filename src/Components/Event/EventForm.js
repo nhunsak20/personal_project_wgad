@@ -1,26 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios'
 
 function EventForm(props) {
-  const [course, setCourse] = useState({});
+  const [courses, setCourses] = useState([]);
+  const [course, setCourse] = useState({})
   const [date, setDate] = useState("");
-  const [describe, setDescribe] = useState("");
+  const [describle, setDescrible] = useState("");
+
+
+  useEffect(() => {
+    getData()
+  },[])
+
+  const getData = () => {
+    axios.get('/api/courses').then(res => {
+      console.log('got it')
+      setCourses(res.data)
+    })
+  }
 
   const courseHandleChanged = event => {
-    setCourse(event.target.value);
+    let findCourse = courses.filter(course => course.course.match(event.target.value))
+    console.log(findCourse)
+    setCourse(findCourse[0]);
   };
   const dateHandleChanged = event => {
     setDate(event.target.value);
   };
-  const describeHandleChanged = event => {
-    setDescribe(event.target.value);
+  const describleHandleChanged = event => {
+    setDescrible(event.target.value);
   };
-  const selectCourse = {};
 
   const submitClicked = event => {
+    const { course_id } = course
     event.preventDefault();
-
-    axios.post('/api/events', { course, date, describe }).then(() => {
+    axios.post('/api/events', { course_id, date, describle }).then(() => {
         props.history.push('/events')
     })
   };
@@ -33,6 +47,12 @@ function EventForm(props) {
     //       alert("Whoa!!")
     //   }
   }
+
+  const selectCourse = courses.map(course => {
+    return (
+    <option key={course.course_id} value={course.course}>{course.course}</option>
+    )
+  })
   return (
     <div className="new-event">
       <div className="new-event-container">
@@ -41,9 +61,9 @@ function EventForm(props) {
             <h2 className="new-event-title">New Events</h2>
             <div className="new-event-input-container">
               <h3>New Course:</h3>
-              <select vaule={course} onChange={courseHandleChanged}>
-                <option>Select Options</option>
-                {/* {selectCourse} */}
+              <select value={course.course} onChange={courseHandleChanged}>
+                <option value="">Select Options</option>
+                {selectCourse}
               </select>
               <div>
                 <h3>New Date:</h3>
@@ -52,7 +72,7 @@ function EventForm(props) {
               </div>
               <div>
                 <h3>Describe: </h3>
-                <textarea value={describe} onChange={describeHandleChanged}></textarea>
+                <textarea value={describle} onChange={describleHandleChanged}></textarea>
               </div>
             </div>
 

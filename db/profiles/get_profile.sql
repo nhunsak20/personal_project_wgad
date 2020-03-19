@@ -1,4 +1,4 @@
-select p.user_id, p.first_name, p.last_name, p.profile_img
+select p.profile_img
 from profiles p
 join users u on p.user_id = u.user_id
 where u.user_id = $1

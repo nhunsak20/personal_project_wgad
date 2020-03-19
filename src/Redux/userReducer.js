@@ -26,10 +26,10 @@ export function login(email, password) {
   };
 }
 
-export function register(username, password) {
+export function register(email, password) {
   return {
     type: REGISTER,
-    payload: axios.post("/api/auth/register", { username, password })
+    payload: axios.post("/api/auth/register", { email, password })
   };
 }
 

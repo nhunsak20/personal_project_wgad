@@ -6,11 +6,14 @@ module.exports = {
         const { session } = req
         const db = req.app.get('db').auth
 
-        let user = await db.check_user(email)
+        let user = await db.check_user_admin(email)
         user = user[0]
 
         if(!user) {
-            return res.status(400).send('Email or Username not found...')
+            user = await db.check_user(email)
+            user = user[0]
+
+            if(!user) return res.status(400).send('Email or Username not found...')
         }
 
         const isAuth = bcrypt.compareSync(password, user.password)
@@ -18,8 +21,8 @@ module.exports = {
         if(isAuth) {
             session.user = {
                 id: user.user_id,
-                username: user.username,
                 email: user.email,
+                profile_img: user.profile_img,
                 isActive: user.isactive,
                 isBoard: user.isboard,
                 isAdmin: user.isadmin,
@@ -42,17 +45,20 @@ module.exports = {
             return res.status(400).send('User already exist...')
         }
 
+        const random = Math.floor(Math.random() * 21) + 1
+        const profile_img = `https://robohash.org/${random}`
+
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
 
         try {
-            let newUser = await db.register_user([email, hash]).auth
+            let newUser = await db.register_user([email, hash, profile_img])
             newUser = newUser[0]
 
             session.user = {
                 id: newUser.user_id,
-                username: newUser.username,
                 email: newUser.email,
+                profile_img: newUser.profile_img,
                 logged: true
             }
             return res.status(200).send(session.user)

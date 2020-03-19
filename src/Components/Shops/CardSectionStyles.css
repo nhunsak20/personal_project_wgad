@@ -1,0 +1,62 @@
+.StripeElement {
+  margin: 0;
+  padding: 0;
+
+  height: 20px;
+  padding: 10px 12px;
+  width: 93%;
+  color: #32325d;
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.card-from {
+  position: relative;
+  width: 400px;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: blue;
+}
+
+.card-section-label {
+  width: 100%;
+  background-color: red;
+}
+
+.card-from-buttons {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.card-from-buttons button {
+  width: 40%;
+  padding: 5px 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+}

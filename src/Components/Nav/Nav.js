@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import axios from "axios";
+import { withRouter } from "react-router-dom";
+// import axios from "axios";
 import { connect } from "react-redux";
 import { checkUser, logout } from "../../Redux/userReducer";
 import WGAD_logo from "../../assets/WGAD_Iogo.png";
@@ -15,47 +15,133 @@ class Nav extends Component {
       isNavToggle: true,
       isProfile: true,
       isProfileMobile: true,
-      user: {}
     };
 
+    this.homeClicked = this.homeClicked.bind(this);
+    this.eventClicked = this.eventClicked.bind(this);
+    this.shopClicked = this.shopClicked.bind(this);
+    this.newsClicked = this.newsClicked.bind(this);
+    this.loginClicked = this.loginClicked.bind(this)
     this.logoutClicked = this.logoutClicked.bind(this)
-    this.logoutMobileClicked = this.logoutMobileClicked.bind(this)
+
+    this.homeMobileClicked = this.homeMobileClicked.bind(this);
+    this.eventMobileClicked = this.eventMobileClicked.bind(this);
+    this.shopMobileClicked = this.shopMobileClicked.bind(this);
+    this.newsMobileClicked = this.newsMobileClicked.bind(this);
+    this.loginMobileClicked = this.loginMobileClicked.bind(this)
+    this.logoutMobileClicked = this.logoutMobileClicked.bind(this);
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.user.id !== prevProps.user.id) {
-      this.props.checkUser()
-      this.getProfile()
+    if (this.props.user.id !== prevProps.user.id) {
+      this.props.checkUser();
+      this.getProfile();
     }
   }
 
   componentDidMount() {
-      this.props.checkUser()
-      this.getProfile()
+    this.props.checkUser();
+    this.getProfile();
   }
 
   getProfile() {
-    if(this.props.user.id){
-    axios.get(`/api/profile/${this.props.user.id}`).then(res => {
-      this.setState({
-        user: res.data
-      })
-    }).catch(() => {
-      this.props.history.push('/')
-    })
-  } 
+    if (this.props.user.id) {
+      // axios
+      //   .get(`/api/profile/${this.props.user.id}`)
+      //   .then(res => {
+          // this.setState({
+          //   user: res.data
+          // });
+        // })
+        // .catch(() => {
+        //   this.props.history.push("/");
+        // });
+    }
   }
 
+  homeClicked(){
+    this.props.history.push('/')
+  }
+
+  eventClicked() {
+    this.props.history.push('/events')
+  }
+
+  shopClicked() {
+    this.props.history.push('/shops')
+  }
+  
+  newsClicked() {
+    this.props.history.push('/news')
+  }
+
+  loginClicked() {
+    this.props.history.push({pathname: '/login', state: {prevPath: this.props.location.pathname}})
+  }
+
+  playClicked = () => {
+    this.props.history.push("/profile/play");
+    this.profileToggle();
+  };
+  scorecardClicked = () => {
+    this.props.history.push("/profile/scorecard");
+    this.profileToggle();
+  };
+
+  accountClicked = () => {
+    this.props.history.push(`/profile/${this.props.user.id}`);
+    this.profileToggle();
+  };
+  
   logoutClicked() {
     this.profileToggle();
     this.props.logout();
+    this.props.history.push("/");
+  }
+
+  homeMobileClicked(){
+    this.toggleClicked()
     this.props.history.push('/')
+  }
+
+  eventMobileClicked() {
+    this.toggleClicked()
+    this.props.history.push('/events')
+  }
+
+  shopMobileClicked() {
+    this.toggleClicked()
+    this.props.history.push('/shops')
+  }
+  
+  newsMobileClicked() {
+    this.toggleClicked()
+    this.props.history.push('/news')
+  }
+
+  loginMobileClicked() {
+    this.toggleClicked()
+    this.props.history.push('/login')
+  }
+
+  playMobileClicked = () => {
+    this.props.history.push("/profile/play");
+    this.profileMobileClicked();
+  };
+  scorecardMobileClicked = () => {
+    this.props.history.push("/profile/scorecard");
+    this.profileMobileClicked();
+  };
+
+  accountMobileClicked = () => {
+    this.props.history.push(`/profile/${this.props.user.id}`);
+    this.profileMobileClicked();
   };
 
   logoutMobileClicked() {
-    this.profileMobileClicked()
-    this.props.logout()
-    this.props.history.push('/')
+    this.profileMobileClicked();
+    this.props.logout();
+    this.props.history.goBack();
   }
 
   navToggleDropdown = () => {
@@ -73,13 +159,11 @@ class Nav extends Component {
   profileMobileToggleDropdown = () => {
     this.setState({
       isProfileMobile: !this.state.isProfileMobile
-    })
-  }
+    });
+  };
 
   profileToggle = () => {
-    const profileMenu = document.getElementById(
-      "invisble-profile"
-    );
+    const profileMenu = document.getElementById("invisble-profile");
     const profileItems = document.querySelectorAll("#profile-menu-items li");
 
     if (this.state.isProfile) {
@@ -157,11 +241,12 @@ class Nav extends Component {
       });
       document.body.style.overflow = "initial";
     }
-    console.log('profile done')
   };
 
+
   render() {
-    const { user } = this.state
+    // const { user } = this.state;
+    const { user } = this.props
     return (
       <div>
         <header className="nav-header">
@@ -172,42 +257,23 @@ class Nav extends Component {
             <nav>
               <div className="desktop-menu">
                 <ul className="desktop-menu-items">
-                  <li>
-                    <Link className="link-menu-item" to="/">
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="link-menu-item" to="/events">
-                      Events
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="link-menu-item" to="/shops">
-                      Shops
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="link-menu-item" to="/news">
-                      News
-                    </Link>
-                  </li>
-                  {!this.props.user.id ? (
-                    <li className="nav-menu-item-last">
-                      <Link className="link-menu-item" to={{pathname: "/login", state: {prevPath: this.props.location.pathname}}}>
-                        Login
-                      </Link>
-                    </li>
+                  <li className="link-menu-item" onClick={this.homeClicked}>Home</li>
+                  <li className="link-menu-item" onClick={this.eventClicked}>Events</li>
+                  <li className="link-menu-item" onClick={this.shopClicked}>Shops</li>
+                  {/* <li className="link-menu-item" onClick={this.newsClicked}>News</li> */}
+                  {!user.id ? (
+                    <li className="link-menu-item" onClick={this.loginClicked}>Login</li>
                   ) : (
                     <li className="nav-menu-item-last">
                       <div className="profile-menu">
                         <div className="desktop-profile">
-                          <span>{user.first_name}</span>
+                          {/* <span>{user.first_name}</span> */}
                           <div
                             className="desktop-profile-icon"
                             id="desktop-profile-icon"
                             onClick={this.profileToggle}
                           >
+                            {console.log(user.profile_img)}
                             <img
                               className="profile-img"
                               src={user.profile_img}
@@ -224,7 +290,7 @@ class Nav extends Component {
           </div>
           <div className="mobile-header-nav">
             <div className="mobile-profile">
-              {this.props.user.id ? (
+              {user.id ? (
                 <img
                   className="mobile-profile-img"
                   src={user.profile_img}
@@ -251,70 +317,48 @@ class Nav extends Component {
             {/* {!this.props.userReducer.user.email ? ( */}
             <nav className="mobile-nav-menu" id="mobile-nav-menu">
               <ul className="mobile-menu-items" id="mobile-menu-items">
-                <li>
-                  <Link
-                    className="link-menu-item"
-                    to="/"
-                    onClick={this.toggleClicked}
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="link-menu-item"
-                    to="/events"
-                    onClick={this.toggleClicked}
-                  >
-                    Events
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/shops">Shops</Link>
-                </li>
-                <li>News</li>
-                {!this.props.user.id ? (
-                  <li>
-                    <Link
-                      className="link-menu-item"
-                      to="/login"
-                      onClick={this.toggleClicked}
-                    >
-                      Login
-                    </Link>
-                  </li>
+                <li className="link-menu-item" onClick={this.homeMobileClicked}>Home</li>
+                <li className="link-menu-item" onClick={this.eventMobileClicked}>Events</li>
+                <li className="link-menu-item" onClick={this.shopMobileClicked}>Shops</li>
+                {/* <li className="link-menu-item" onClick={this.newsMobileClicked}>News</li> */}
+                {!user.id ? (
+                  <li className="link-menu-item" onClick={this.loginMobileClicked}>Login</li>
                 ) : null}
               </ul>
             </nav>
             <nav className="mobile-nav-profile" id="mobile-nav-profile">
               <ul className="mobile-profile-items" id="mobile-profile-items">
-                <li><Link to={`/profile/${this.props.user.id}`} onClick={this.profileMobileClicked}>
-                    account
-                  </Link></li>
-                <li onClick={this.profileMobileClicked}>play</li>
-                <li onClick={this.profileMobileClicked}>scorecard</li>
+                <li onClick={this.accountMobileClicked}>account</li>
+                {/* <li onClick={this.playMobileClicked}>play</li>
+                <li onClick={this.scorecardMobileClicked}>scorecard</li> */}
                 <li onClick={this.logoutMobileClicked}>logout</li>
               </ul>
             </nav>
           </div>
         </header>
-        <div className="invisble" id='invisble'>
+        <div className="invisble" id="invisble">
           <div className="desktop-wgad"></div>
           <div className="flex">
             <div className="invisble-home"></div>
             <div className="invisble-event"></div>
             <div className="invisble-shop"></div>
             <div className="invisble-news"></div>
-            <div className="invisble-profile" id='invisble-profile'>
+            <div className="invisble-profile" id="invisble-profile">
               <ul className="profile-menu-items" id="profile-menu-items">
-                <li>
-                  <Link to={`/profile/${this.props.user.id}`} onClick={this.profileToggle}>
-                    account
-                  </Link>
-                </li>
-                <li>play</li>
-                <li>srocecard</li>
+                <li onClick={this.accountClicked}>account</li>
+                {/* <li onClick={this.playClicked}>play</li>
+                <li onClick={this.scorecardClicked}>srocecard</li> */}
                 <li onClick={this.logoutClicked}>logout</li>
+                <li>
+                  {/* <label>Admin
+                    <input type='checkbox' />
+                    <span className='checkmark'/>
+                  </label> */}
+                  {/* <input id="checkbox" type="checkbox" value="admin" />
+                  <label for="checkbox" class="checkbox">
+                    Admin
+                  </label> */}
+                </li>
               </ul>
             </div>
           </div>
@@ -325,7 +369,7 @@ class Nav extends Component {
 }
 
 const mapStateToProps = reduxState => {
-  const { user } = reduxState.user
+  const { user } = reduxState.user;
   return {
     user
   };

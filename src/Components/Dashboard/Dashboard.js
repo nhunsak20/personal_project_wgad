@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkUser } from '../../Redux/userReducer'
 
-class Dashboard extends Component {
+import groupImg from '../../assets/groupGolf.jpg'
+import golfImg from '../../assets/golf.jpg'
 
-    constructor() {
-        super()
-        this.state = {
-            email: ''
-        }
-    }
+import './Dashboard.css'
+
+class Dashboard extends Component {
 
     // componentDidUpdate(prevProps, prevState) {
     //     if(this.state.email !== prevState.email) {
@@ -29,17 +27,25 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div style={{paddingTop:"75px"}}>
-                <h1>Dashboard</h1>
-                {this.props.userReducer.user.email}
+            <div className="dashboard">
+                <div className='dash-container'>
+                    <h1>Welcome to WGDA</h1>
+                    <div className='background-img'>
+                        <img src={golfImg} alt=''/>
+                    </div>
+                    <div className='background-img-1'>
+                        <img src={groupImg} alt=''/>
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
 const mapStateToProps = reduxState => {
+    const { user } = reduxState
     return {
-        userReducer: reduxState
+        user
     }
 }
 

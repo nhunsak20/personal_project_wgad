@@ -3,7 +3,7 @@ module.exports = {
         const db = req.app.get('db').events
 
         db.get_events().then(dbObj => {
-            return res.status(200).send(dbObj.data)
+            return res.status(200).send(dbObj)
         }).catch(err => {
             return res.status(400).send(err)
         })
@@ -13,17 +13,24 @@ module.exports = {
         const db = req.app.get('db').events
 
         db.get_event(id).then(dbObj => {
-            return res.status(200).send(dbObj.data)
+            return res.status(200).send(dbObj)
+        }).catch(err => {
+            return res.status(400).send(err)
+        })
+    },
+    getCourses: (req, res) => {
+        const db = req.app.get('db').events
+        db.get_courses().then(dbObj => {
+            return res.status(200).send(dbObj)
         }).catch(err => {
             return res.status(400).send(err)
         })
     },
     new: (req, res) => {
-        const { name } = req.body.events
+        const { course_id, date, describle } = req.body
         const db = req.app.get('db').events
-
-        db.new_event({name}).then(dbObj => {
-            return res.status(200).send(dbObj.data)
+        db.new_event({course_id, date, describle}).then(dbObj => {
+            return res.status(200).send(dbObj)
         }).catch(err => {
             return res.status(400).send(err)
         })
@@ -31,10 +38,10 @@ module.exports = {
     },
     update: (req, res) => {
         const { id } = req.params
-        const { name } = req.body.events
+        const { course_id, date, describle } = req.body
         const db = req.app.get('db').events
 
-        db.update_event({id, name}).then(dbObj => {
+        db.update_event({id, course_id, date, describle}).then(dbObj => {
             return res.status(200).send(dbObj.data)
         }).catch(err => {
             return res.status(400).send(err)

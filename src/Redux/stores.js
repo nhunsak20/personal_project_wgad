@@ -6,6 +6,6 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import userReducer from './userReducer'
 import cartReducer from './cartReducer'
 
-const rootReducer = combineReducers({user: userReducer, cart: cartReducer})
+const rootReducer = combineReducers({user: userReducer, carts: cartReducer})
 
 export default createStore(rootReducer, composeWithDevTools(applyMiddleware(promiseMiddleware)))

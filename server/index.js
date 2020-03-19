@@ -9,7 +9,10 @@ const authCtrl = require('./controllers/authController'),
     midCtrl = require('./middliewares/user_middleware'),
     profileCtrl = require('./controllers/profileController'),
     shoppingCtrl = require('./controllers/shoppingController'),
-    eventCtrl = require('./controllers/eventController')
+    eventCtrl = require('./controllers/eventController'),
+    cartCtrl = require('./controllers/cartController'),
+    mailCtrl = require('./controllers/nodemailerController'),
+    stripeCtrl = require('./controllers/stripeController')
 
 const app = express()
 
@@ -27,6 +30,8 @@ app.use(
     })
 )
 
+
+
 /* ---------------------- */
 /* --  Authentication  -- */
 /* ---------------------- */
@@ -43,22 +48,40 @@ app.get('/api/auth/check', midCtrl.check_user)
 /* ----  Profiles  ---- */
 app.get('/api/profile/:id', midCtrl.isLogged, profileCtrl.getProfile)
 app.put('/api/profile/:id', midCtrl.isLogged, profileCtrl.updateProfile)
-app.post('/api/profile/', midCtrl.isLogged, profileCtrl.newProfile)
+app.post('/api/profile', midCtrl.isLogged, profileCtrl.newProfile)
 
 /* ----  Shoppings  ---- */
-app.get('/api/products/', shoppingCtrl.getProducts)
+app.get('/api/products', shoppingCtrl.getProducts)
 app.get('/api/products/:id', shoppingCtrl.getProduct)
-app.post('/api/products/', midCtrl.isBoard, shoppingCtrl.new)
-app.put('/api/products/:id', midCtrl.isBoard, shoppingCtrl.update)
-app.delete('/api/products/:id', midCtrl.isBoard, midCtrl.isAdmin, shoppingCtrl.remove)
+app.post('/api/products', midCtrl.isAdmin, shoppingCtrl.new)
+app.put('/api/products/:id', midCtrl.isAdmin, shoppingCtrl.update)
+app.delete('/api/products/:id', midCtrl.isAdmin, midCtrl.isAdmin, shoppingCtrl.remove)
+
+/* -------  Carts ------- */
+app.get('/api/shop/carts', cartCtrl.getCart)
+app.post('/api/shop/carts', cartCtrl.addCart)
+app.post('/api/shop/carts/product/:product_id', cartCtrl.updateCart)
+app.post('/api/shop/carts/products/:product_id', cartCtrl.removeOneCart)
+app.post('/api/shop/carts/clear', cartCtrl.removeAllCart)
+app.post('/purchased/:id', midCtrl.isLogged, cartCtrl.confirmOrder)
 
 /* ------  Events ------ */
 
-app.get('/api/events/', eventCtrl.getEvents)
+app.get('/api/events', eventCtrl.getEvents)
 app.get('/api/events/:id', eventCtrl.getEvent)
-app.put('/api/events/:id', midCtrl.isBoard, eventCtrl.update)
-app.post('/api/events/', midCtrl.isBoard, eventCtrl.new)
-app.delete('/api/events/:id', midCtrl.isBoard, eventCtrl.remove)
+app.get('/api/courses', eventCtrl.getCourses)
+app.put('/api/events/:id', midCtrl.isAdmin, eventCtrl.update)
+app.post('/api/events', midCtrl.isAdmin, eventCtrl.new)
+app.delete('/api/events/:id', midCtrl.isAdmin, eventCtrl.remove)
+
+/* ----  Nodemailer ---- */
+
+app.post('/send', mailCtrl.purchased)
+
+/* ----  Stripes ---- */
+
+app.post('/charge', stripeCtrl.pay)
+
 
 massive({
     connectionString: CONNECTION_STRING,
