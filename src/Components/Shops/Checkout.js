@@ -15,8 +15,6 @@ const stripeKey = "pk_test_Huv53DHV91vgimAjUtv6SOKj00AKivQfyF";
 
 function Checkout(props) {
   const [products, setProducts] = useState([]);
-  // const [total, setTotal] = useState(0);
-  // const [cartProduct, setCartProduct] = useState({});
 
   const cancelClicked = () => {
     props.history.goBack();
@@ -24,13 +22,13 @@ function Checkout(props) {
 
   useEffect(() => {
     getCarts();
-  }, []);
+    props.getCarts();
+  }, [props]);
 
   const getCarts = () => {
     axios.get("/api/products").then(res => {
       setProducts(res.data);
     });
-    props.getCarts();
   };
 
   const productFilters = product_id => {

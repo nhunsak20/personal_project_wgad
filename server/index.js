@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express'),
     session = require('express-session'),
     massive = require('massive'),
+    path = require('path'),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
 const authCtrl = require('./controllers/authController'),
@@ -81,6 +82,10 @@ app.post('/send', mailCtrl.purchased)
 /* ----  Stripes ---- */
 
 app.post('/charge', stripeCtrl.pay)
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 
 massive({
