@@ -12,7 +12,7 @@ module.exports = {
             })
             const idempotencyKey = uuid();
             await stripe.charges.create({
-                amount: price * 100,
+                amount: Number(price * 100),
                 customer: customer.id,
                 currency: 'usd',
             },

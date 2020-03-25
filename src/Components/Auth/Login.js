@@ -106,9 +106,7 @@ function Login(props) {
                 />
               </div>
               <div className="login-error">
-                {console.log(props.user.isError)}
                 {props.user.isError ? (
-                  
                   <span>{props.user.errorMessage}</span>
                 ) : null}
               </div>

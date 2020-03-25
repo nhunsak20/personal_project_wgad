@@ -6,7 +6,7 @@ module.exports = {
         let { price, email } = req.body
         let msg = `
             <h1>Your Pruchased</h1>
-            <p>Total: ${price}</p>
+            <p>Total: $${price}</p>
             <p>Thank you for your time and have a nice day</p>
         `
         let tranporter = nodemailer.createTransport({
@@ -33,9 +33,6 @@ module.exports = {
             if(error) {
                 return console.log('Nodemailer: ' + error)
             }
-
-            // console.log("Message sent: %s", info.messageId)
-            // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info))
             res.sendStatus(200)
         })
     },

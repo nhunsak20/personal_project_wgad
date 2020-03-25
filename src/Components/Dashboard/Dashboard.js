@@ -29,7 +29,8 @@ class Dashboard extends Component {
         return (
             <div className="dashboard">
                 <div className='dash-container'>
-                    <h1>Welcome to WGDA</h1>
+                    <h1 style={{textAlign: 'center'}}>Welcome to <span style={{fontSize: '4rem'}}>WGAD</span></h1>
+                    <h3 style={{textAlign: 'center'}}>Wasatch Golf Association of the Deaf</h3>
                     <div className='background-img'>
                         <img src={golfImg} alt=''/>
                     </div>

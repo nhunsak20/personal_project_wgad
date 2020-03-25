@@ -1,6 +1,3 @@
-
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc')
-
 module.exports = {
     getCart: async (req, res) => {
         const { session } = req
@@ -131,8 +128,6 @@ module.exports = {
         const db = req.app.get('db').carts
 
         try {
-            console.log('user: ', id)
-            console.log('data: ', orders)
             let order = await db.confirm_order({id, orders})
             order = order[0]
             console.log(order)

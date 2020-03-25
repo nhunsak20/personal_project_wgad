@@ -22,13 +22,13 @@ function Checkout(props) {
 
   useEffect(() => {
     getCarts();
-    props.getCarts();
-  }, [props]);
+  }, []);
 
   const getCarts = () => {
     axios.get("/api/products").then(res => {
       setProducts(res.data);
     });
+    props.getCarts();
   };
 
   const productFilters = product_id => {
@@ -82,7 +82,6 @@ function Checkout(props) {
   };
 
   const finalAmount = () => {
-    // setTotal(+((totalAmount() + taxes(0.0715)).toFixed(2)))
     return totalAmount() + taxes(0.0715);
   };
 
@@ -128,7 +127,7 @@ function Checkout(props) {
         orders
       });
       if (confirmOrder.data === "Accepted") {
-        const confirm = await axios.post("/send", { total, email });
+        const confirm = await axios.post("/send", { price: total, email });
         if (confirm.data === "OK") {
           props.removeCarts();
           props.clearCarts();

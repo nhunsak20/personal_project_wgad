@@ -4,7 +4,7 @@
   position: relative;
   width: 100vw;
   padding-top: 10vh;
-  height: 100vh;
+  min-height: 100vh;
   @include flex(column, center, center);
 
   .event-container {
@@ -172,6 +172,7 @@
   position: relative;
   padding-top: 75px;
   width: 100vw;
+  min-height: 100vh;
   box-sizing: border-box;
   // background-color: rgba(255, 255, 255, 0.9);
   @include flex(column, center, center);
@@ -275,6 +276,7 @@
 .event-detail {
   position: relative;
   width: 100vw;
+  min-height: 100vh;
   padding: 15vh 0 5vh 0;
   box-sizing: border-box;
   @include flex(column, center, center);

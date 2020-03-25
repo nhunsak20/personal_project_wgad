@@ -13,7 +13,7 @@ function EventEdit(props) {
 
   useEffect(() => {
     if (props.match.params.event_id) getData();
-  });
+  }, [props]);
 
   const getData = () => {
     axios
@@ -67,7 +67,8 @@ function EventEdit(props) {
   })
 
   const deleteClicked = event => {
-    axios.delete(`/api/events/${props.match.params.event_id}`);
+    let remove = axios.delete(`/api/events/${props.match.params.event_id}`);
+    if(remove) props.history.push("/events")
   };
 
   return (

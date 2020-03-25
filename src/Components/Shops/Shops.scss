@@ -5,7 +5,7 @@
   box-sizing: border-box;
   padding-top: 10vh;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   @include flex(row, space-around, flex-start);
   .products-container {
     width: 90%;
